@@ -1,8 +1,8 @@
 {
   "scripts": {
     "test": "eslint static/src",
-    "build": "parcel build static/src/index.js -d static/dist",
-    "watch": "parcel watch static/src/index.js -d static/dist"
+    "build": "parcel build tmp/static/src/index.js -d tmp/static/dist",
+    "watch": "parcel watch tmp/static/src/index.js -d tmp/static/dist"
   },
   "devDependencies": {
     "eslint": "^4.18.1",

@@ -8,9 +8,12 @@ name = "pypi"
 [packages]
 
 flask = "*"
+sqlalchemy = "*"
+"psycopg2" = "*"
 
 
 [dev-packages]
 
 honcho = "*"
 "flake8" = "*"
+docker-compose = "*"
