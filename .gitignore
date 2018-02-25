@@ -167,4 +167,4 @@ typings/
 .env
 
 # Project build file
-static/dest/
+/tmp/static/dest/
