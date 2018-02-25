@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "eslint static/src",
+    "build": "parcel build static/src/index.js -d static/dist",
+    "watch": "parcel watch static/src/index.js -d static/dist"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.6.2"
+  }
+}
