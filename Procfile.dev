@@ -1,3 +1,2 @@
 web: FLASK_APP=tmp/__init__.py FLASK_DEBUG=1 flask run
-parcel: yarn watch
 docker: docker-compose up
