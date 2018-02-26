@@ -7,6 +7,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 from .models import Base
 from .matrix import matrix
+from .sky import sky
 
 
 DATABASE_URI = os.getenv('DATABASE_URI')
@@ -15,6 +16,7 @@ app = Flask(__name__)
 assets = Environment(app)
 
 app.register_blueprint(matrix, url_prefix='/matrix')
+app.register_blueprint(sky, url_prefix='/sky')
 
 
 @app.before_first_request
