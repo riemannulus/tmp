@@ -3,7 +3,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    {% assets filters="pyscss", output="gen/index.css",
+    "matrix/index.scss" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
     <title>tmp</title>
   </head>
   <body>
@@ -20,6 +23,6 @@
       <a role="button" href="{{ url_for('.choice', choice='red') }}"><img src="" alt="Red pill" /></a>
       <a role="button" href="{{ url_for('.choice', choice='blue') }}"><img src="" alt="Blue pill" /></a>
     </p>
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('.static', filename='index.js') }}"></script>
   </body>
 </html>

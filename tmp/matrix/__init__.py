@@ -2,13 +2,15 @@ from flask import (
     Blueprint, abort, g, redirect, render_template, request, url_for
 )
 
-from .decorators import use_db
-from .models import User
-from .utils import get_ip
+from ..decorators import use_db
+from ..models import User
+from ..utils import get_ip
 
 matrix = Blueprint(
     'matrix', __name__,
-    template_folder='templates/matrix'
+    template_folder='templates',
+    static_folder='static',
+    static_url_path='/static/matrix'
 )
 
 
@@ -24,7 +26,7 @@ def index():
         elif user.choice == 'red':
             return redirect('second')
 
-    return render_template('index.html')
+    return render_template('matrix/index.html')
 
 
 @matrix.route('/choice')

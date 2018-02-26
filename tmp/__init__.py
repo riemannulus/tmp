@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, g
+from flask_assets import Environment
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -10,13 +11,8 @@ from .matrix import matrix
 
 DATABASE_URI = os.getenv('DATABASE_URI')
 
-app = Flask(
-    __name__,
-    static_url_path='',
-    static_folder='static/dist',
-    template_folder='templates',
-)
-
+app = Flask(__name__)
+assets = Environment(app)
 
 app.register_blueprint(matrix, url_prefix='/matrix')
 
