@@ -6,8 +6,6 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: "${DATABASE_ID}"
-      POSTGRES_PASSWORD: "${DATABASE_PASS}"
-      POSTGRES_DB: "${DATABASE_NAME}"
-
-
+      POSTGRES_USER: 'test'
+      POSTGRES_PASSWORD: 'test'
+      POSTGRES_DB: 'tmp'

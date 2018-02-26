@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>tmp</title>
+  </head>
+  <body>
+    <img src="http://4.bp.blogspot.com/-avoot2jSrKY/UT1Hq2V5MbI/AAAAAAAAAFQ/3J1jV7xdHFA/s1600/MatrixBluePillRedPill.jpg" />
+    <p class="center">Red pill or Blue pill?
+      <br />The choice is yours</p>
+    <p>Let me tell you why you're here. You're here because you know something.
+      </br>What you know you can’t explain. But you feel it.
+      </br>You’ve felt it your entire life. There's something wrong with the world.
+      </br>You don't know what it is, but it's there. Like a splinter in your mind.
+      </br>Driving you mad. It is this feeling that has brought you to me.
+    </br>The [Censored] is everywhere. It is all around us. Even now, in this very room.</p>
+    <p class="center">
+      <a role="button" href="{{ url_for('.choice', choice='red') }}"><img src="" alt="Red pill" /></a>
+      <a role="button" href="{{ url_for('.choice', choice='blue') }}"><img src="" alt="Blue pill" /></a>
+    </p>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>
