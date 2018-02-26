@@ -1,10 +1,11 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, g
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from .models import Base, User
+from .models import Base
+from .matrix import matrix
 
 
 DATABASE_URI = os.getenv('DATABASE_URI')
@@ -17,13 +18,20 @@ app = Flask(
 )
 
 
+app.register_blueprint(matrix, url_prefix='/matrix')
+
+
 @app.before_first_request
 def initialize():
-    global Session
     engine = create_engine(DATABASE_URI)
-    Session = scoped_session(sessionmaker(engine))
+    app.Session = scoped_session(sessionmaker(engine))
+    Base.metadata.create_all(engine)
+    Base.query = app.Session.query_property()
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.after_request
+def after_request(response):
+    if hasattr(g, 'db'):
+        g.db.close()
+
+    return response
