@@ -13,11 +13,6 @@ association_table = Table(
 
 
 class User(Base):
-    def __init__(**kwargs):
-        if kwargs is not None:
-            for key, value in kwargs.iteritems():
-                print "%s == %s" % (key, value)
-
     __tablename__ = 'users'
 
     ip = Column(String(40), primary_key=True)
@@ -29,11 +24,6 @@ class User(Base):
 
 
 class Place(Base):
-    def __init__(**kwargs):
-        if kwargs is not None:
-            for key, value in kwargs.iteritems():
-                print "%s == %s" % (key, value)
-
     __tablename__ = 'places'
 
     code = Column(String(40), nullable=False, primary_key=True)
@@ -46,11 +36,6 @@ class Place(Base):
 
 
 class Matrix(Base):
-    def __init__(**kwargs):
-        if kwargs is not None:
-            for key, value in kwargs.iteritems():
-                print "%s == %s" % (key, value)
-
     __tablename__ = 'matrix'
 
     ip = Column(String(40), ForeignKey('users.ip'), primary_key=True)
