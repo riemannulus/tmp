@@ -168,3 +168,6 @@ typings/
 
 # Project build file
 /tmp/static/dest/
+
+# Ignore swap file
+*.swp

@@ -27,7 +27,7 @@ class Place(Base):
     __tablename__ = 'places'
 
     code = Column(String(40), nullable=False, primary_key=True)
-    place = Column(String(20), nullable=False)
+    name = Column(String(20), nullable=False)
     users = relationship(
         "User",
         secondary=association_table,
