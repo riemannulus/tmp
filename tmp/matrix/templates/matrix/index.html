@@ -3,14 +3,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    {% assets filters="pyscss", output="gen/index.css",
-    "matrix/index.scss" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
-    <title>tmp</title>
+    <title>Choice</title>
   </head>
   <body>
-    <img src="http://4.bp.blogspot.com/-avoot2jSrKY/UT1Hq2V5MbI/AAAAAAAAAFQ/3J1jV7xdHFA/s1600/MatrixBluePillRedPill.jpg" />
+    <img src="{{ url_for('.static', filename='MatrixBluePillRedPill.jpg') }}" />
     <p class="center">Red pill or Blue pill?
       <br />The choice is yours</p>
     <p>Let me tell you why you're here. You're here because you know something.
@@ -23,6 +19,6 @@
       <a role="button" href="{{ url_for('.choice', choice='red') }}"><img src="" alt="Red pill" /></a>
       <a role="button" href="{{ url_for('.choice', choice='blue') }}"><img src="" alt="Blue pill" /></a>
     </p>
-    <script src="{{ url_for('.static', filename='index.js') }}"></script>
+    {{ javascript_tag('matrix') | safe }}
   </body>
 </html>
