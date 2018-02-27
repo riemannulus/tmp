@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.6"
+before_install:
+  - npm install -g yarn
+  - yarn build
+  - pip install pipenv
+install:
+  - pipenv install -d
+script:
+  - eslint
+  - flake8
+  - pytest tests
