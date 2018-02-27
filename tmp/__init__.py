@@ -10,7 +10,7 @@ from .matrix import matrix
 from .sky import sky
 
 
-DATABASE_URI = os.getenv('DATABASE_URI')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 app = Flask(__name__)
 assets = Environment(app)
@@ -19,7 +19,7 @@ app.register_blueprint(matrix, url_prefix='/matrix')
 app.register_blueprint(sky, url_prefix='/sky')
 
 
-@app.before_first_request
+
 def initialize():
     engine = create_engine(DATABASE_URI)
     app.Session = scoped_session(sessionmaker(engine))
