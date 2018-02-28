@@ -3,8 +3,8 @@ from flask import (
 )
 
 from ..decorators import use_db
-from ..models import User, Matrix
-from ..utils import get_ip
+from ..models import Matrix
+from ..utils import get_user
 
 matrix = Blueprint(
     'matrix', __name__,
@@ -16,10 +16,8 @@ matrix = Blueprint(
 @matrix.route('/')
 @use_db
 def index():
-    ip = get_ip()
-    user = g.db.query(User).get(ip)
+    user = get_user()
     if user and user.matrix:
-        # TODO: Make these entry points.
         if user.matrix.choice == 'blue':
             return redirect(url_for('.out'))
         elif user.matrix.choice == 'red':
@@ -35,18 +33,13 @@ def choice():
     if color not in ('blue', 'red'):
         return abort(400)
 
-    ip = get_ip()
-
-    user = g.db.query(User).get(ip)
-    if user:
+    user = get_user()
+    if user.matrix:
         return redirect(url_for('.index'))
 
-    user = User()
     matrix = Matrix()
-    user.ip = ip
     matrix.choice = color
     user.matrix = matrix
-    g.db.add(user)
     g.db.commit()
     return redirect(url_for('.index'))
 

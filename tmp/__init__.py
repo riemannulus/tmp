@@ -8,6 +8,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from .models import Base
 from .matrix import matrix
 from .sky import sky
+from .qrcode import qrcode
 
 
 DATABASE_URL = os.getenv('DATABASE_URL')
@@ -22,6 +23,7 @@ webpack.init_app(app)
 
 app.register_blueprint(matrix, url_prefix='/matrix')
 app.register_blueprint(sky, url_prefix='/sky')
+app.register_blueprint(qrcode, url_prefix='/qrcode')
 
 
 @app.before_first_request

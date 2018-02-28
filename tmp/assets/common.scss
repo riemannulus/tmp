@@ -1,0 +1,28 @@
+$break-mobile: 800px;
+$body-padding: 20px;
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+
+  @media screen and (max-width: $break-mobile) {
+    padding: $body-padding;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+[role=button] {
+  padding: 1em;
+
+  img {
+    max-width: 200px;
+  }
+}
+
+.center {
+  text-align: center;
+}
