@@ -23,12 +23,20 @@ body {
   width: 100%;
 
   > .cell {
+    align-items: center;
     border: 1px solid white;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+    &.locked {
+      background: rgba(0, 0, 0, .8);
+      color: white;
+    }
 
     img {
-      height: 100%;
-      width: 100%;
+      max-height: 90%;
+      max-width: 90%;
     }
   }
 }
