@@ -63,8 +63,8 @@ def test_place(session):
     assert session.query(Place).count() == 0
     assert session.query(User).count() == 0
 
-    place1 = Place(code='123', name='my house')
-    place2 = Place(code='456', name='your house')
+    place1 = Place(code='123', name='my house', filename='my-house.png')
+    place2 = Place(code='456', name='your house', filename='your-house.png')
 
     user1 = User(ip='127.0.0.1')
     user2 = User(ip='127.0.0.2')
