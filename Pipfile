@@ -10,8 +10,8 @@ name = "pypi"
 flask = "*"
 sqlalchemy = "*"
 "psycopg2" = "*"
-flask-assets = "*"
 uwsgi = "*"
+flask-webpack = "*"
 
 
 [dev-packages]

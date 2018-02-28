@@ -18,6 +18,10 @@ img {
 
 [role=button] {
   padding: 1em;
+
+  img {
+    max-width: 200px;
+  }
 }
 
 .center {

@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.6"
+env:
+  DATABASE_URL: 'sqlite:///db.sqlite'
+before_install:
+  - npm install -g yarn
+  - yarn install -D
+  - yarn build
+  - pip install pipenv
+install:
+  - pipenv install -d
+script:
+  - yarn test
+  - flake8
+  - pytest tests
