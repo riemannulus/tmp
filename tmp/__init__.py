@@ -24,9 +24,9 @@ app.register_blueprint(matrix, url_prefix='/matrix')
 app.register_blueprint(sky, url_prefix='/sky')
 
 
-
+@app.before_first_request
 def initialize():
-    engine = create_engine(DATABASE_URI)
+    engine = create_engine(DATABASE_URL)
     app.Session = scoped_session(sessionmaker(engine))
     Base.metadata.create_all(engine)
     Base.query = app.Session.query_property()
