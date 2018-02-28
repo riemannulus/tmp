@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, String, Table
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import backref, relationship
 
 
 Base = declarative_base()
@@ -40,4 +40,4 @@ class Matrix(Base):
 
     ip = Column(String(40), ForeignKey('users.ip'), primary_key=True)
     choice = Column(String(10), nullable=False)
-    user = relationship("User", backref="matrix")
+    user = relationship("User", backref=backref("matrix", uselist=False))
