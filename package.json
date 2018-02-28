@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "eslint --ignore-path .gitignore",
+    "test": "eslint --ignore-path .gitignore .",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --progress"
   },
