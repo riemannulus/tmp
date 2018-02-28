@@ -169,3 +169,6 @@ typings/
 # Project build file
 /tmp/static/
 /build/manifest.json
+
+# Ignore swap file
+*.swp
