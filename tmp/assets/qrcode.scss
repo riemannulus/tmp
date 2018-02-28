@@ -6,7 +6,7 @@ $plate-rows: 3;
 html,
 body {
   height: 100%;
-  margin: 0;
+  margin: 0 auto;
   overflow-y: hidden;
   padding: 0;
 }
@@ -19,10 +19,8 @@ body {
   display: grid;
   grid-template-columns: repeat($plate-cols, calc(100% / #{$plate-cols}));
   grid-template-rows: repeat($plate-rows, calc(100% / #{$plate-rows}));
-  height: 800px;
-  max-height: 100%;
-  max-width: 100%;
-  width: 800px;
+  height: 100%;
+  width: 100%;
 
   > .cell {
     border: 1px solid white;
