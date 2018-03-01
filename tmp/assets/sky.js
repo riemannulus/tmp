@@ -3,6 +3,7 @@ import './sky.scss';
 const containerElem = document.querySelector('.container');
 const cubeElem = document.querySelector('.cube');
 const TIME = 5000;
+let done = false;
 
 let timestamp = null;
 let tmp = 0;
@@ -39,9 +40,9 @@ function rotate(vec, axis, angle) {
 
 function motionHandler(event) {
 
-    let b = event.beta;
-    let g = -event.gamma;
-    let a = event.alpha;
+    let alpha = Math.round(event.alpha);
+    let beta = Math.round(event.beta);
+    let gamma = Math.round(-event.gamma);
     let defaultAngle = 0;
 
     if(screen.orientation.type == 'landscape-primary') defaultAngle += -90;
@@ -53,13 +54,13 @@ function motionHandler(event) {
     let defaultY = rotate(Array(0, 1, 0), defaultZ, defaultAngle);
 
     let axisY = defaultY;
-    let axisX = rotate(defaultX, axisY, g);
-    let axisZ = rotate(rotate(defaultZ, axisY, g), axisX, b);
+    let axisX = rotate(defaultX, axisY, gamma);
+    let axisZ = rotate(rotate(defaultZ, axisY, gamma), axisX, beta);
 
     cubeElem.style.transform = (
-        `rotate3d(${axisZ.join(', ')}, ${a}deg)` +
-        `rotate3d(${axisX.join(', ')}, ${b}deg)` +
-        `rotate3d(${axisY.join(', ')}, ${g}deg)`);
+        `rotate3d(${axisZ.join(', ')}, ${alpha}deg)` +
+        `rotate3d(${axisX.join(', ')}, ${beta}deg)` +
+        `rotate3d(${axisY.join(', ')}, ${gamma}deg)`);
 
     if (event.beta > 140 &&
         almost(event.gamma, 0, 10)) {
@@ -74,6 +75,27 @@ function motionHandler(event) {
     }
 
     containerElem.style.background = `rgba(255, 0, 0, ${tmp / TIME})`;
+
+    if (tmp == TIME && !done) {
+        done = true;
+
+        let fd = new FormData();
+        fd.append('alpha', alpha);
+        fd.append('beta', beta);
+        fd.append('gamma', gamma);
+
+        fetch(AUTH_URL, {
+            method: 'POST',
+            body: fd,
+        })
+            .then(res => res.text())
+            .then(url => {
+                location.href = url;
+            })
+            .catch(() => {
+                done = false;
+            });
+    }
 
 }
 

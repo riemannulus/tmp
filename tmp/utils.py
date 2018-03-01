@@ -20,5 +20,6 @@ def get_user():
 
     user = User(ip=ip)
     g.db.add(user)
+    g.db.commit()
 
     return user

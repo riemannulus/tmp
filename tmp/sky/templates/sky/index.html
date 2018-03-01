@@ -16,6 +16,9 @@
         <div class="pane down">D</div>
       </div>
     </div>
+    <script>
+      const AUTH_URL = "{{ auth_url | safe }}";
+    </script>
     {{ javascript_tag('sky') | safe }}
   </body>
 </html>

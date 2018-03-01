@@ -23,7 +23,7 @@ webpack.init_app(app)
 
 app.register_blueprint(matrix, url_prefix='/matrix')
 app.register_blueprint(sky, url_prefix='/sky')
-app.register_blueprint(qrcode, url_prefix='/qrcode')
+app.register_blueprint(qrcode, url_prefix='/')
 
 
 @app.before_first_request

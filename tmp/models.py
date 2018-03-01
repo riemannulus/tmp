@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, String, Table
+from sqlalchemy import Boolean, Column, ForeignKey, String, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relationship
 
@@ -34,6 +34,15 @@ class Place(Base):
         secondary=association_table,
         back_populates="places"
     )
+
+
+class Sky(Base):
+
+    __tablename__ = 'sky'
+
+    user_ip = Column(String(40), ForeignKey('users.ip'), primary_key=True)
+    checked = Column(Boolean, nullable=False)
+    user = relationship("User", backref=backref("sky", uselist=False))
 
 
 class Matrix(Base):

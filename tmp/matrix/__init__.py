@@ -3,7 +3,7 @@ from flask import (
 )
 
 from ..decorators import use_db
-from ..models import Matrix
+from ..models import Matrix, Place
 from ..utils import get_user
 
 matrix = Blueprint(
@@ -17,7 +17,16 @@ matrix = Blueprint(
 @use_db
 def index():
     user = get_user()
-    if user and user.matrix:
+    if not user:
+        return abort(403)
+
+    places = set(Place.query.all())
+    user_places = set(user.places)
+
+    if user_places != places:
+        return abort(403)
+
+    if user.matrix:
         if user.matrix.choice == 'blue':
             return redirect(url_for('.out'))
         elif user.matrix.choice == 'red':

@@ -18,6 +18,9 @@ def index():
 
     user = get_user()
 
+    if set(places_all) == set(user.places):
+        return redirect(url_for('sky.index'))
+
     return render_template(
         'qrcode/index.html',
         places=places_all,
