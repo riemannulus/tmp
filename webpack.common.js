@@ -6,6 +6,7 @@ module.exports = {
     entry: {
         'matrix': './tmp/assets/matrix.js',
         'qrcode': './tmp/assets/qrcode.js',
+        'sky': './tmp/assets/sky.js',
     },
     output: {
         path: path.resolve(__dirname, 'tmp/static'),

@@ -1,0 +1,52 @@
+$container-size: 400px;
+$box-size: 200px;
+$half: $box-size / 2;
+
+html {
+  background: magenta;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: $container-size;
+  justify-content: center;
+  margin: 20px auto;
+  perspective: $container-size;
+  width: $container-size;
+}
+
+.cube {
+  height: $box-size;
+  transform-origin: 50% 50% 0;
+  transform-style: preserve-3d;
+  width: $box-size;
+
+  .pane {
+    align-items: center;
+    background: green;
+    border: 1px dashed black;
+    display: flex;
+    font-size: $box-size / 3;
+    height: $box-size;
+    justify-content: center;
+    opacity: .95;
+    position: absolute;
+    width: $box-size;
+  }
+
+  .west { transform: rotateY(-90deg) rotateZ(90deg) translateZ($half); }
+  .east { transform: rotateY(90deg) rotateZ(-90deg) translateZ($half); }
+  .north { transform: rotateY(180deg) rotateX(90deg) translateZ($half); }
+  .south { transform: rotateX(-90deg) translateZ($half); }
+  .up { transform: translateZ($half); }
+  .down {
+    background: pink;
+    transform: rotateX(180deg) translateZ($half);
+  }
+}
