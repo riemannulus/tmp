@@ -5,6 +5,7 @@ const ManifestRevisionPlugin = require('manifest-revision-webpack-plugin');
 module.exports = {
     entry: {
         'matrix': './tmp/assets/matrix.js',
+        'sky': './tmp/assets/sky.js',
     },
     output: {
         path: path.resolve(__dirname, 'tmp/static'),
