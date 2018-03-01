@@ -21,9 +21,9 @@ app.config.update({
 })
 webpack.init_app(app)
 
-app.register_blueprint(matrix, url_prefix='/matrix')
+app.register_blueprint(qrcode)
 app.register_blueprint(sky, url_prefix='/sky')
-app.register_blueprint(qrcode, url_prefix='/')
+app.register_blueprint(matrix, url_prefix='/matrix')
 
 
 @app.before_first_request
