@@ -1,0 +1,42 @@
+@import './common';
+
+$plate-cols: 3;
+$plate-rows: 3;
+
+html,
+body {
+  height: 100%;
+  margin: 0 auto;
+  overflow-y: hidden;
+  padding: 0;
+}
+
+#plate {
+  background: url('./qr_background.jpg');
+  background-size: cover;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat($plate-cols, calc(100% / #{$plate-cols}));
+  grid-template-rows: repeat($plate-rows, calc(100% / #{$plate-rows}));
+  height: 100%;
+  width: 100%;
+
+  > .cell {
+    align-items: center;
+    border: 1px solid white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+    &.locked {
+      background: rgba(0, 0, 0, .8);
+      color: white;
+    }
+
+    img {
+      max-height: 90%;
+      max-width: 90%;
+    }
+  }
+}

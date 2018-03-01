@@ -28,6 +28,7 @@ class Place(Base):
 
     code = Column(String(40), nullable=False, primary_key=True)
     name = Column(String(20), nullable=False)
+    filename = Column(String(200), nullable=False)
     users = relationship(
         "User",
         secondary=association_table,

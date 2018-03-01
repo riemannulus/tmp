@@ -7,8 +7,8 @@ def use_db(f):
 
     @wraps(f)
     def wrapped(*args, **kwarg):
-        assert not hasattr(g, 'db')
-        g.db = current_app.Session()
+        if not hasattr(g, 'db'):
+            g.db = current_app.Session()
         return f(*args, **kwarg)
 
     return wrapped

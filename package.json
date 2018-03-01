@@ -1,8 +1,9 @@
 {
   "scripts": {
     "test": "eslint --ignore-path .gitignore .",
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --config webpack.dev.js --progress"
+    "build": "webpack --config webpack.prod.js --mode production",
+    "install": "webpack --config webpack.prod.js -- mode production",
+    "start": "webpack --config webpack.dev.js --mode development --progress --watch"
   },
   "dependencies": {
     "clean-webpack-plugin": "^0.1.18",

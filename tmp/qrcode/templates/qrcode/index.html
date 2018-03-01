@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Index</title>
+  </head>
+  <body>
+    <div id="plate">
+      {% for place in places %}
+      {% set locked = place not in user.places %}
+      <div class="cell {{ 'locked' if locked else 'unlocked' }}">
+        {% if locked %}
+        <img src="{{ url_for('.static', filename=place.filename) }}" alt="{{ place.name }}" title="{{ place.name }}" />
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {{ javascript_tag('qrcode') | safe }}
+  </body>
+</html>
