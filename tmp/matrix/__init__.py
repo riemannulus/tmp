@@ -12,6 +12,8 @@ matrix = Blueprint(
     static_folder='static',
 )
 
+APPLY_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScAr2zShOE0ENgRS9A8HqMyoqF7SX8c7M80-4C6SZXLzJ2mgw/viewform'  # noqa
+
 
 @matrix.route('/')
 @use_db
@@ -30,7 +32,7 @@ def index():
         if user.matrix.choice == 'blue':
             return redirect(url_for('.out'))
         elif user.matrix.choice == 'red':
-            return redirect(url_for('sky.index'))
+            return redirect(APPLY_FORM_URL)
 
     return render_template('matrix/index.html')
 
