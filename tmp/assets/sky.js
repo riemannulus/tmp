@@ -44,6 +44,10 @@ function motionHandler(event) {
     let a = event.alpha;
     let defaultAngle = 0;
 
+    if(screen.orientation.type == 'landscape-primary') defaultAngle += -90;
+    else if(screen.orientation.type == 'landscape-secondary') defaultAngle += 90;
+    else if(screen.orientation.type == 'portrait-secondary') defaultAngle += 180;
+
     let defaultZ = Array(0, 0, 1);
     let defaultX = rotate(Array(1, 0, 0), defaultZ, defaultAngle);
     let defaultY = rotate(Array(0, 1, 0), defaultZ, defaultAngle);
