@@ -1,43 +1,49 @@
-from sqlalchemy import Column, ForeignKey, String, Table
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import backref, relationship
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 
-Base = declarative_base()
-
-association_table = Table(
-    'user_place_association', Base.metadata,
-    Column('users', String(40), ForeignKey('users.ip')),
-    Column('places', String(40), ForeignKey('places.code'))
+association_table = db.Table(
+    'user_place_association',
+    db.Column(
+        'users',
+        db.String(40),
+        db.ForeignKey('users.ip'),
+        primary_key=True
+    ),
+    db.Column(
+        'places',
+        db.String(40),
+        db.ForeignKey('places.code')
+    )
 )
 
 
-class User(Base):
+class User(db.Model):
     __tablename__ = 'users'
 
-    ip = Column(String(40), primary_key=True)
-    places = relationship(
-        "Place",
+    ip = db.Column(db.String(40), primary_key=True)
+    places = db.relationship(
+        'Place',
         secondary=association_table,
-        back_populates="users"
+        back_populates='users'
     )
 
 
-class Place(Base):
+class Place(db.Model):
     __tablename__ = 'places'
 
-    code = Column(String(40), nullable=False, primary_key=True)
-    name = Column(String(20), nullable=False)
-    users = relationship(
-        "User",
+    code = db.Column(db.String(40), nullable=False, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    users = db.relationship(
+        'User',
         secondary=association_table,
-        back_populates="places"
+        back_populates='places'
     )
 
 
-class Matrix(Base):
+class Matrix(db.Model):
     __tablename__ = 'matrix'
 
-    ip = Column(String(40), ForeignKey('users.ip'), primary_key=True)
-    choice = Column(String(10), nullable=False)
-    user = relationship("User", backref=backref("matrix", uselist=False))
+    ip = db.Column(db.String(40), db.ForeignKey('users.ip'), primary_key=True)
+    choice = db.Column(db.String(10), nullable=False)
+    user = db.relationship("User", backref=db.backref('matrix', lazy=True))
