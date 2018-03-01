@@ -7,7 +7,8 @@ from ..utils import get_user
 qrcode = Blueprint(
     'qrcode', __name__,
     template_folder='templates',
-    static_folder='static'
+    static_folder='static',
+    static_url_path='/images/'
 )
 
 

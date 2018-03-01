@@ -11,7 +11,10 @@
       {% set locked = place not in user.places %}
       <div class="cell {{ 'locked' if locked else 'unlocked' }}">
         {% if locked %}
-        <img src="{{ url_for('.static', filename=place.filename) }}" alt="{{ place.name }}" title="{{ place.name }}" />
+        <figure>
+          <img src="{{ url_for('.static', filename=place.filename) }}" alt="{{ place.name }}" title="{{ place.name }}" />
+          <figcaption>{{ place.name }}</figcaption>
+        </figure>
         {% endif %}
       </div>
       {% endfor %}
