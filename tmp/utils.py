@@ -4,10 +4,7 @@ from .models import User
 
 
 def get_ip():
-    forwarded = request.headers.getlist('X-Forwarded-For')
-    if forwarded:
-        return forwarded[0]
-
+    # Since using ProxyFix, Deosn't need to parse X-Forwarded-For
     return request.remote_addr
 
 
